@@ -1,0 +1,39 @@
+{
+    "first":
+        {
+            "name": "krolevets",
+            "data":{
+                "temp":286.9,
+                "feels_like":285.27,
+                "temp_min":286.9,
+                "temp_max":286.9,
+                "pressure":1025,
+                "humidity":36,
+                "sea_level":1025,
+                "grnd_level":1005
+            }},
+    "second":
+        {
+            "name":"portland",
+            "data":{
+                "temp":278.16,
+                "feels_like":273.43,
+                "temp_min":276.17,
+                "temp_max":279.58,
+                "pressure":1011,
+                "humidity":80}
+            },
+    "third":
+        {
+            "name":"kyiv",
+            "data":{
+                "temp":287.99,
+                "feels_like":286.76,
+                "temp_min":286.29,
+                "temp_max":287.99,
+                "pressure":1022,
+                "humidity":47
+                }},
+    "fourth":"1",
+    "fifth":"2"
+}
