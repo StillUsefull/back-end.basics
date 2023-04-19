@@ -1,33 +1,37 @@
 const StudentService = require("../services/StudentService");
+const dbService = require("../services/dbService");
 
 
 class StudentsController {
 
     async getStudents(req, res, next){
         try {
-            const userData = StudentService.getStudents();
-            res.send(userData);
+            const userData = await StudentService.getStudents();
+            res.json(userData);
         } catch (e) {
             next(e);
         }
     }
     async createStudent(req, res, next){
         try {
-            
+            await StudentService.registration(req.body);
+            res.send('Student was created');
         } catch (e) {
             next(e);
         }
     }
-    async updateStudentById(req, res, next){
+    async updateStudentByName(req, res, next){
         try {
-
+            await StudentService.updateStudent(req.body.name, req.body);
+            res.send('Student was updated');
         } catch (e) {
             next(e);
         }
     }
-    async deleteStudentById(req, res, next){
+    async deleteStudentByName(req, res, next){
         try {
-
+            dbService.deleteByName(req.query.name);
+            res.send('Student was deleted')
         } catch (e) {
             next(e);
         }

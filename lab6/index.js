@@ -1,22 +1,17 @@
 //node_modules
 
 const express = require('express');
-const path = require('path')
 require('dotenv').config();
 
 //modules
-const weatherRouter = require('./routes/weather.js');
-const errorMiddleware = require('./middlewares/errorMiddleware.js');
+const studentRouter = require('./routes/student.js');
 //
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 //middlewares
 app.use(express.json());
-app.use('/', weatherRouter);
-app.use(errorMiddleware); //error middleware must be last
-
-
+app.use('/', studentRouter);
 
 //start
 const start = () => {
