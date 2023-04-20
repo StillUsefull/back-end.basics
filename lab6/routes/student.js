@@ -6,7 +6,7 @@ const StudentsRounter = new Router('/');
 
 StudentsRounter.get('/get-students', StudentController.getStudents);
 StudentsRounter.post('/create-student', StudentController.createStudent);
-StudentsRounter.put('/update-student-by-surname', StudentController.deleteStudentByName);
-StudentsRounter.delete('/delete-student-by-id', StudentController.deleteStudentByName);
+StudentsRounter.put('/update-student-by-surname', StudentController.updateStudentByName);
+StudentsRounter.delete('/delete-student-by-surname', StudentController.deleteStudentByName);
 
 module.exports = StudentsRounter;

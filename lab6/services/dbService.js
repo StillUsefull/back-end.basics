@@ -36,13 +36,8 @@ class DBService {
     deleteByName(surname) {
         try {
             const data = this.readFromJSON();
-            const studentIndex = data.map((item, index) => {
-                if (item.surname == surname){
-                    return index;
-                }
-            })
-            delete data[studentIndex];
-            this.writeIntoJSON(data);
+            const outputData = data.filter(item => item.surname != surname);
+            this.writeIntoJSON(outputData);
             return true;
         } catch (e) {
             throw new Error(e.message);
