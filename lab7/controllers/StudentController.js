@@ -20,17 +20,17 @@ class StudentsController {
             next(e);
         }
     }
-    async updateStudentByName(req, res, next){
+    async updateStudentByid(req, res, next){
         try {
-            await StudentService.updateStudent(req.body.name, req.body);
+            await StudentService.updateStudent(req.query.id, {...req.body});
             res.send('Student was updated');
         } catch (e) {
             next(e);
         }
     }
-    async deleteStudentByName(req, res, next){
+    async deleteStudentByid(req, res, next){
         try {
-            StudentService.deleteByName(req.query.name);
+            StudentService.deleteStudent(req.query.id);
             res.send('Student was deleted')
         } catch (e) {
             next(e);

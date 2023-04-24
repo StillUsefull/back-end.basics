@@ -1,3 +1,4 @@
+const UniversalErrorHandler = require('../exceprions/UniversalErrorHandler.js');
 const Students = require('../models/student.model.js');
 
 
@@ -8,6 +9,8 @@ class StudentService {
         if (candidate) {
             throw UniversalErrorHandler.BadRequest(`User with ${email} is already exist`)
         }
+        const student = await Students.create(data);
+        return student;
     }
 
     async getStudents(){
@@ -15,12 +18,22 @@ class StudentService {
         return studentsData;
     }
 
-    async updateStudent(name, data){
-        
+    async updateStudent(id, data){
+        const student = await Students.findByIdAndUpdate(id, {data})
+        if (student){
+             return true;
+        } 
+        return UniversalErrorHandler.BadRequest('I cannot update student`s info');
     }
 
-    async deleteStudent(name){
-        
+    
+
+    async deleteStudent(id){
+        const student = await Students.findByIdAndDelete(id);
+        if (student) {
+            return true;
+        }
+        return UniversalErrorHandler.BadRequest('I cannot delete student`s info by this id');
     }
 
 }

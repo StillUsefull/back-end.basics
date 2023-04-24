@@ -7,14 +7,15 @@ const MONGO = `mongodb+srv://root:${process.env.DB_PASSWORD}@lab7.kf5x3l4.mongod
 
 //modules
 const studentRouter = require('./routes/student.js');
+const workRouter = require('./routes/works.js')
 //
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 //middlewares
 app.use(express.json());
-app.use('/', studentRouter);
-
+app.use('/students', studentRouter);
+app.use('/works', workRouter);
 //start
 const start = async () => {
     try {
