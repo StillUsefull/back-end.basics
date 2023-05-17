@@ -8,7 +8,8 @@ const StudentSchema = new Schema({
     facult: {type: String, required: true},
     avrMark: {type: Number, required: true},
     work: {type: String, required: false},
-    city: {type: String, required: true}
+    city: {type: String, required: true},
+    avatar: {type: String, required: false}
 });
 
 module.exports = model('Student', StudentSchema);

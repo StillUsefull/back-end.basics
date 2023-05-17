@@ -1,7 +1,5 @@
 const StudentService = require("../services/StudentService");
 
-
-
 class StudentsController {
 
     async getStudents(req, res, next){
@@ -13,8 +11,10 @@ class StudentsController {
         }
     }
     async createStudent(req, res, next){
+        
         try {
-            await StudentService.registration(req.body);
+            console.log(req.files);
+            await StudentService.registration(req.body, req.files.picture);
             res.send('Student was created');
         } catch (e) {
             next(e);

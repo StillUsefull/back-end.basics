@@ -1,15 +1,20 @@
 const UniversalErrorHandler = require('../exceprions/UniversalErrorHandler.js');
 const Students = require('../models/student.model.js');
-
+const FileService = require('./FileService.js');
 
 class StudentService {
 
-    async registration(data){
+    async registration(data, picture){
+        console.log(picture)
         const candidate = await Students.findOne({surname: data.surname})
+        const fileName = FileService.saveFile(picture);
         if (candidate) {
             throw UniversalErrorHandler.BadRequest(`User with ${email} is already exist`)
         }
-        const student = await Students.create(data);
+        if (!fileName) {
+            throw UniversalErrorHandler.BadRequest('U forgot to add photo');
+        }
+        const student = await Students.create({...data, avatar: fileName});
         return student;
     }
 
